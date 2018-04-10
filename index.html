@@ -51,6 +51,29 @@
     <div class="posts">
 <div class="post">
   <h1 class="post-title">
+    <a href="https://namedjw.github.io/post/howtousehugo/">Hugo從安裝到部署</a>
+  </h1>
+  <span class="post-date">Tue, Apr 10, 2018</span>
+  windows平臺安裝Hugo （翻譯自Hugo官方文檔）  前往hugo發行版主頁。
+ ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這些都是zip文件。
+ 在每一個版本的末尾找到windows文件，（因爲是更具字母表排序），根據你32位或64位的windows系統下載32位或64位的文件。
+ 將下載好的zip文件移動到你創建的任一盤符:Hugo\bin 文件下(如 C:\Hugo\bin)。
+ 雙擊zip文件將它解壓到前面創建的Hugo\bin目錄下，windows默認會解壓到當前目錄，除非你指定了其他的解壓目錄
+ 你現在應該有三個文件:hugo 的可執行文件（例如 hugo_0.18_windows_amd64.exe), license.md, 和 readme.md。（你現在可以刪除zip文件了。） 將hugo可執行文件(hugo_0.18_windows_amd64.exe)重命名為hugo.exe更易於使用。
+  ​
+現在你需要將hugo加入你的windows PATH 設置中
+##使用Hugo創建站點（翻譯自Hugo官網）
+ 在c:\hugo\ 下新建sites文件夾
+ 創建一個新站點
+  cd sites hugo new site demo   添加主題  cd themes git clone https://github.com/spf13/hyde.git   運行Hugo  cd .. hugo server --theme=tyde --buildDrafts --watch  瀏覽器打開http://localhost:1313
+部署Hugo到GitHub page  在你的GitHub創建一個倉庫，命名為&lt;你的github用戶名&gt;.github.io(如 sss.github.io)
+  
+  <div class="read-more-link">
+    <a href="/post/howtousehugo/">Read More…</a>
+  </div>
+  
+</div><div class="post">
+  <h1 class="post-title">
     <a href="https://namedjw.github.io/post/first/">First</a>
   </h1>
   <span class="post-date">Tue, Apr 10, 2018</span>
