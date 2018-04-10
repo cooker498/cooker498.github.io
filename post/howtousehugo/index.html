@@ -51,9 +51,7 @@
     <div class="post">
   <h1>Hugo從安裝到部署</h1>
   <span class="post-date">Tue, Apr 10, 2018</span>
-  
-
-<h2 id="windows平臺安裝hugo-翻譯自hugo官方文檔">windows平臺安裝Hugo （翻譯自Hugo官方文檔）</h2>
+  <p>##windows平臺安裝Hugo （翻譯自Hugo官方文檔）</p>
 
 <ol>
 <li><p>前往<a href="https://github.com/gohugoio/hugo/releases/" title="Title">hugo發行版</a>主頁。</p></li>
@@ -68,8 +66,6 @@
 
 <li><p>你現在應該有三個文件:hugo 的可執行文件（例如 <code>hugo_0.18_windows_amd64.exe</code>), <code>license.md</code>, 和 <code>readme.md</code>。（你現在可以刪除zip文件了。） 將hugo可執行文件(<code>hugo_0.18_windows_amd64.exe</code>)重命名為<code>hugo.exe</code>更易於使用。</p></li>
 </ol>
-
-<p>​</p>
 
 <p>現在你需要將hugo加入你的windows PATH 設置中</p>
 
@@ -86,15 +82,13 @@
 </code></pre>
 
 <ol>
-<li>添加主題</li>
-</ol>
+<li><p>創建一個新站點</p>
 
-<pre><code class="language-bash">   cd themes
-   git clone https://github.com/spf13/hyde.git
-</code></pre>
+<pre><code class="language-bash">cd themes
+git clone https://github.com/spf13/hyde.git
+</code></pre></li>
 
-<ol>
-<li>運行Hugo</li>
+<li><p>運行Hugo</p></li>
 </ol>
 
 <pre><code class="language-bash">   cd ..
@@ -103,7 +97,7 @@
 
 <p>瀏覽器打開<a href="http://localhost:1313">http://localhost:1313</a></p>
 
-<h2 id="部署hugo到github-page">部署Hugo到GitHub page</h2>
+<p>##部署Hugo到GitHub page</p>
 
 <ol>
 <li><p>在你的GitHub創建一個倉庫，命名為<code>&lt;你的github用戶名&gt;.github.io</code>(如 <code>sss.github.io</code>)</p></li>
