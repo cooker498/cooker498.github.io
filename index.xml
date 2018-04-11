@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>如何给apk签名</title>
+      <title>如何给apk签名(翻译自ionic官方文档)</title>
       <link>https://namedjw.github.io/post/howtosignandroidapp/</link>
       <pubDate>Wed, 11 Apr 2018 00:06:57 +0800</pubDate>
       
       <guid>https://namedjw.github.io/post/howtosignandroidapp/</guid>
-      <description></description>
+      <description>如果你想将你的app发布到google play 商店，你需要为你的apk文件签名。在此之前，你需要新增一个新的证书/密钥库。 让我们使用jdk提供的k</description>
     </item>
     
     <item>
