@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>How to Use Custom Icons on Ionic3 - 神秘的糖屋</title>
+  <title>如何在ionic3中使用自定义图标 - 神秘的糖屋</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="shengmidetang" />
-  <meta name="description" content="" />
+  <meta name="description" content="###本教程受网上博客启发，传送门 获取icons 首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步 图标资源网站推荐 ic" />
 
   <meta name="keywords" content="Hugo, theme, even" />
 
@@ -49,8 +49,8 @@
 
 
 
-<meta property="og:title" content="How to Use Custom Icons on Ionic3" />
-<meta property="og:description" content="" />
+<meta property="og:title" content="如何在ionic3中使用自定义图标" />
+<meta property="og:description" content="###本教程受网上博客启发，传送门 获取icons 首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步 图标资源网站推荐 ic" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://namedjw.github.io/post/how-to-use-custom-icons-on-ionic3/" />
 
@@ -70,20 +70,20 @@
 
 
 
-<meta itemprop="name" content="How to Use Custom Icons on Ionic3">
-<meta itemprop="description" content="">
+<meta itemprop="name" content="如何在ionic3中使用自定义图标">
+<meta itemprop="description" content="###本教程受网上博客启发，传送门 获取icons 首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步 图标资源网站推荐 ic">
 
 
 <meta itemprop="datePublished" content="2018-05-09T12:20:17&#43;08:00" />
 <meta itemprop="dateModified" content="2018-05-09T12:20:17&#43;08:00" />
-<meta itemprop="wordCount" content="0">
+<meta itemprop="wordCount" content="697">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="How to Use Custom Icons on Ionic3"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="如何在ionic3中使用自定义图标"/>
+<meta name="twitter:description" content="###本教程受网上博客启发，传送门 获取icons 首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步 图标资源网站推荐 ic"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -146,7 +146,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">How to Use Custom Icons on Ionic3</h1>
+      <h1 class="post-title">如何在ionic3中使用自定义图标</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-05-09 </span>
@@ -162,13 +162,106 @@
   <h2 class="post-toc-title">Contents</h2>
   
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#获取icons">获取icons</a></li>
+<li><a href="#生成你的新字体">生成你的新字体</a></li>
+<li><a href="#设置css文件">设置CSS文件</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
 </div>
 
     
     <div class="post-content">
       
+
+<p>###<a href="https://stackoverflow.com/questions/38462885/add-custom-icon-in-ionic-2">本教程受网上博客启发，传送门</a></p>
+
+<h2 id="获取icons">获取icons</h2>
+
+<p>首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步</p>
+
+<p>图标资源网站推荐  <a href="http://www.iconfont.cn/">iconfont</a>、<a href="https://thenounproject.com/">thenounproject</a></p>
+
+<h2 id="生成你的新字体">生成你的新字体</h2>
+
+<p>下载好需要的图标后，我们将使用一个应用<a href="https://icomoon.io/app/">Icon Moon</a>,这个应用的基本用途是将SVG图标转换为浏览器可以理解的字体。这个应用中也包含了一些图标（大部分是免费的），因此如果你还没有找到你的SVG文件，可以从这里找。</p>
+
+<p>好了，第一步我们需要引入SVG文件</p>
+
+<p><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fr54hc87ppj31hc0req5n.jpg" alt="iconmoon1" /></p>
+
+<p>引入后看起来像下面这样</p>
+
+<p><img src="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fr54mw1fd2j31hc0rcdi3.jpg" alt="http://wx3.sinaimg.cn/mw690/0060lm7Tly1fr54mw1fd2j31hc0rcdi3.jpg" /></p>
+
+<p>下一步选择需要生成字体的图标并点击页面下方的Genernate Font 按钮</p>
+
+<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fr54so9v7zj31hc0req57.jpg" alt="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fr54so9v7zj31hc0req57.jpg" /></p>
+
+<p>我们将会看到一个图标配置窗口，点击下载，得到一个压缩包</p>
+
+<h2 id="设置css文件">设置CSS文件</h2>
+
+<p>下载好iconmoon.zip文件后，打开它，将fonts解压到<code>src/assets/</code>，将<code>style.css</code>解压到<code>src/theme/</code>并将<code>style.css</code>重命名为<code>icons.css</code>.</p>
+
+<p>然后，为了引入<code>icons.css</code>,在<code>app.scss</code>加入下面代码 <code>@import &quot;../theme/icons&quot;</code></p>
+
+<p>打开<code>icons.scss</code>,改成下面的形式</p>
+
+<pre><code class="language-scss">@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?tmmgio');
+    src:  url('fonts/icomoon.eot?tmmgio#iefix') format('embedded-opentype'),
+      url('../assets/fonts/icomoon.ttf?tmmgio') format('truetype'),
+      url('../assets/fonts/icomoon.woff?tmmgio') format('woff'),
+      url('../assets/fonts/icomoon.svg?tmmgio#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^=&quot;icon-&quot;], [class*=&quot; icon-&quot;] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    vertical-align: middle;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  @mixin makeIcon($arg, $val, $col) {
+    .ai-#{$arg}:before ,
+    .ion-ios-ai-#{$arg}:before ,
+    .ion-ios-ai-#{$arg}-outline:before ,
+    .ion-md-ai-#{$arg}:before ,
+    .ion-md-ai-#{$arg}-outline:before  {
+      content: $val;
+      font-size: 26px;
+      color: $col;
+    }
+  }
+@include makeIcon(YellowRing, '\e900',#D15B55);
+@include makeIcon(RedRing, '\e901',#66B081);
+</code></pre>
+
+<p><strong>请仔细阅读下面的说明，否则ion-icons将无法工作</strong></p>
+
+<p>因为某种原因，如果添加了自定义的icons，系统默认的icons将无法正常显示。我们不能不找到<code>variables.scss</code>文件并将<code>@import &quot;ionic.ionicons&quot;;</code>改为<code>@import &quot;ionicons&quot;;</code></p>
+
+<p>我们完成了，现在我们的工程可以完全适配系统图标和自定义图标。使用方法是一样的，示例如下</p>
+
+<pre><code class="language-typescript">&lt;ion-icon name='ai-YellowRing'&gt;&lt;/ion-icon&gt;
+</code></pre>
+
     </div>
 
     
