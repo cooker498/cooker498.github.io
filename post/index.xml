@@ -17,7 +17,7 @@
       <pubDate>Mon, 25 Jun 2018 12:33:13 +0800</pubDate>
       
       <guid>https://namedjw.github.io/post/howtohandleurlschemainionic/</guid>
-      <description>##在ionic app中处理URL SCHEMA（ANDROID） 安装插件 ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/ npm install --save @ionic-native/deeplinks 将myapp换成当前app的名称，</description>
+      <description>在ionic app中处理URL SCHEMA（ANDROID） 安装插件 ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/ npm install --save @ionic-native/deeplinks 将myapp换成当前app的名称， 将e</description>
     </item>
     
     <item>
