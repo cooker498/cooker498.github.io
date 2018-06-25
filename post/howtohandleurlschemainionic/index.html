@@ -180,9 +180,9 @@
 
 <h2 id="在ionic-app中处理url-schema-android">在ionic app中处理URL SCHEMA（ANDROID）</h2>
 
-<ol>
+<ul>
 <li>安装插件</li>
-</ol>
+</ul>
 
 <pre><code class="language-bash">ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/
 npm install --save @ionic-native/deeplinks
@@ -190,9 +190,9 @@ npm install --save @ionic-native/deeplinks
 
 <p>将myapp换成当前app的名称， 将example 换成需要跳转app 的域名</p>
 
-<ol>
+<ul>
 <li>修改app.module.ts，将插件引入ionic工程</li>
-</ol>
+</ul>
 
 <pre><code class="language-typescript">import { Deeplinks } from '@ionic-native/deeplinks';
 
@@ -210,9 +210,9 @@ npm install --save @ionic-native/deeplinks
 })
 </code></pre>
 
-<ol>
+<ul>
 <li>修改app.component.ts</li>
-</ol>
+</ul>
 
 <p>在app.component.ts 中写入如下代码，注意须在platform.ready中</p>
 
@@ -248,17 +248,17 @@ this.deeplinks.route({
 
 <h2 id="在ionic-app中打开其他app并传递参数-android">在ionic app中打开其他app并传递参数（ANDROID）</h2>
 
-<ol>
+<ul>
 <li>安装插件</li>
-</ol>
+</ul>
 
 <pre><code class="language-bash">$ ionic cordova plugin add cordova-plugin-inappbrowser
 $ npm install --save @ionic-native/in-app-browser
 </code></pre>
 
-<ol>
+<ul>
 <li>修改app.module.ts，将插件引入ionic工程</li>
-</ol>
+</ul>
 
 <pre><code>import { InAppBrowser } from '@ionic-native/in-app-browser';
 
@@ -277,9 +277,9 @@ $ npm install --save @ionic-native/in-app-browser
 })
 </code></pre>
 
-<ol>
+<ul>
 <li>在需要调用外部app的地方引入下面的代码</li>
-</ol>
+</ul>
 
 <pre><code class="language-typescript">import { InAppBrowser } from '@ionic-native/in-app-browser';
 constructor(private iab: InAppBrowser) { }
