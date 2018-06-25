@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 神秘的糖屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 May 2018 12:20:17 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Jun 2018 12:33:13 +0800</lastBuildDate>
     
 	<atom:link href="https://namedjw.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>如何在ionic中处理url schema 和 如果在ionic app中打开其他app并传递参数</title>
+      <link>https://namedjw.github.io/post/howtohandleurlschemainionic/</link>
+      <pubDate>Mon, 25 Jun 2018 12:33:13 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/post/howtohandleurlschemainionic/</guid>
+      <description>##在ionic app中处理URL SCHEMA（ANDROID） 安装插件 ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/ npm install --save @ionic-native/deeplinks 将myapp换成当前app的名称，</description>
+    </item>
     
     <item>
       <title>如何在ionic3中使用自定义图标</title>
