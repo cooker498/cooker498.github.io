@@ -285,7 +285,7 @@ $ npm install --save @ionic-native/in-app-browser
 constructor(private iab: InAppBrowser) { }
 
 openotherapp(){
-    let address = 'myapp://app';
+    let address = 'myapp://app/';
     let account = 'test'
     this.iab.create(address + account, '_system');
 }
