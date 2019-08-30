@@ -1,63 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<?xml-stylesheet type="text/xsl" href="https://namedjw.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://namedjw.github.io/post/howtohandleurlschemainionic/</loc>
+    <loc>/post/howtohandleurlschemainionic/</loc>
     <lastmod>2018-06-25T12:33:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://namedjw.github.io/post/how-to-use-custom-icons-on-ionic3/</loc>
+    <loc>/post/how-to-use-custom-icons-on-ionic3/</loc>
     <lastmod>2018-05-09T12:20:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://namedjw.github.io/post/howtosignandroidapp/</loc>
-    <lastmod>2018-04-11T00:06:57+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://namedjw.github.io/post/howtousehugo/</loc>
-    <lastmod>2018-04-10T22:09:49+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://namedjw.github.io/about/</loc>
-    <lastmod>2018-04-10T21:26:07+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://namedjw.github.io/categories/</loc>
+    <loc>/categories/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://namedjw.github.io/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2018-06-25T12:33:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://namedjw.github.io/tags/</loc>
+    <loc>/tags/</loc>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://namedjw.github.io/</loc>
+    <loc>/</loc>
     <lastmod>2018-06-25T12:33:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>

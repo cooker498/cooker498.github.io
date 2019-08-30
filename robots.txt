@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://namedjw.github.io/sitemap.xml
+Sitemap: /sitemap.xml

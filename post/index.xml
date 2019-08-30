@@ -2,49 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 神秘的糖屋</title>
-    <link>https://namedjw.github.io/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on 神秘的糖屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 25 Jun 2018 12:33:13 +0800</lastBuildDate>
     
-	<atom:link href="https://namedjw.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何在ionic中处理url schema 和 如果在ionic app中打开其他app并传递参数</title>
-      <link>https://namedjw.github.io/post/howtohandleurlschemainionic/</link>
+      <link>/post/howtohandleurlschemainionic/</link>
       <pubDate>Mon, 25 Jun 2018 12:33:13 +0800</pubDate>
       
-      <guid>https://namedjw.github.io/post/howtohandleurlschemainionic/</guid>
+      <guid>/post/howtohandleurlschemainionic/</guid>
       <description>在ionic app中处理URL SCHEMA（ANDROID） 安装插件 ionic cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=myapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=example.com --variable ANDROID_PATH_PREFIX=/ npm install --save @ionic-native/deeplinks 将myapp换成当前app的名称， 将e</description>
     </item>
     
     <item>
       <title>如何在ionic3中使用自定义图标</title>
-      <link>https://namedjw.github.io/post/how-to-use-custom-icons-on-ionic3/</link>
+      <link>/post/how-to-use-custom-icons-on-ionic3/</link>
       <pubDate>Wed, 09 May 2018 12:20:17 +0800</pubDate>
       
-      <guid>https://namedjw.github.io/post/how-to-use-custom-icons-on-ionic3/</guid>
+      <guid>/post/how-to-use-custom-icons-on-ionic3/</guid>
       <description>本教程受网上博客启发，传送门 获取icons 首先，你必须得到你的svg图标，如果你已经准备好了图标，你可以跳过这一步 图标资源网站推荐 iconf</description>
-    </item>
-    
-    <item>
-      <title>如何给apk签名(翻译自ionic官方文档)</title>
-      <link>https://namedjw.github.io/post/howtosignandroidapp/</link>
-      <pubDate>Wed, 11 Apr 2018 00:06:57 +0800</pubDate>
-      
-      <guid>https://namedjw.github.io/post/howtosignandroidapp/</guid>
-      <description>如果你想将你的app发布到google play 商店，你需要为你的apk文件签名。在此之前，你需要新增一个新的证书/密钥库。 让我们使用jdk提供的k</description>
-    </item>
-    
-    <item>
-      <title>Hugo從安裝到部署</title>
-      <link>https://namedjw.github.io/post/howtousehugo/</link>
-      <pubDate>Tue, 10 Apr 2018 22:09:49 +0800</pubDate>
-      
-      <guid>https://namedjw.github.io/post/howtousehugo/</guid>
-      <description>windows平臺安裝Hugo （翻譯自Hugo官方文檔） 前往hugo發行版主頁。 ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這</description>
     </item>
     
   </channel>
