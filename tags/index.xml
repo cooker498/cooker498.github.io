@@ -2,13 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 神秘的糖屋</title>
-    <link>/tags/</link>
+    <link>https://namedjw.github.io/tags/</link>
     <description>Recent content in Tags on 神秘的糖屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Wed, 11 Apr 2018 00:06:57 +0800</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://namedjw.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android</title>
+      <link>https://namedjw.github.io/tags/android/</link>
+      <pubDate>Wed, 11 Apr 2018 00:06:57 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://namedjw.github.io/tags/hugo/</link>
+      <pubDate>Tue, 10 Apr 2018 22:09:49 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ionic</title>
+      <link>https://namedjw.github.io/tags/ionic/</link>
+      <pubDate>Mon, 25 Jun 2018 12:33:13 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/tags/ionic/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

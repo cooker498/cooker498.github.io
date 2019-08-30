@@ -2,13 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 神秘的糖屋</title>
-    <link>/categories/</link>
+    <link>https://namedjw.github.io/categories/</link>
     <description>Recent content in Categories on 神秘的糖屋</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Mon, 25 Jun 2018 12:33:13 +0800</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://namedjw.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>App开发</title>
+      <link>https://namedjw.github.io/categories/app%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Mon, 25 Jun 2018 12:33:13 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/categories/app%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>工具使用</title>
+      <link>https://namedjw.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 10 Apr 2018 22:09:49 +0800</pubDate>
+      
+      <guid>https://namedjw.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
