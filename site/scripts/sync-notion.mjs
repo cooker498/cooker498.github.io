@@ -220,6 +220,7 @@ function normalizeMarkdown(markdown) {
     const icon = attributes.match(/\bicon="([^"]+)"/i)?.[1] ?? '';
     const content = body
       .replace(/^\t/gm, '')
+      .replace(/\\\*\\\*([^*\n]+?)\\\*\\\*/g, '<strong>$1</strong>')
       .replace(/\*\*([^*\n]+)\*\*(?=[\p{L}\p{N}])/gu, '**$1** ')
       .trim();
     const lines = content ? content.split('\n') : [];
