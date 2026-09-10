@@ -24,7 +24,7 @@ draft: false
 ---
 ```
 
-提交到 `master` 分支后，GitHub Actions 会自动重建并发布站点。文件名决定文章地址，例如 `ddia-chapter-1.md` 对应 `/post/ddia-chapter-1/`。
+提交到 `master` 分支后，GitHub Actions 会自动重建并发布站点。文件名决定文章地址，例如 `example-post.md` 对应 `/post/example-post/`。
 
 ## 从 Notion 自动发布
 
