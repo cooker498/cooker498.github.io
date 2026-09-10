@@ -230,10 +230,41 @@ function normalizeMarkdown(markdown) {
   result = result
     .replace(/<table\b([^>]*)>/gi, '\n\n<table$1>\n')
     .replace(/<\/table>/gi, '\n</table>\n\n')
+    .replace(/\n{3,}/g, '\n\n');
+
+  // The enhanced Markdown endpoint emits one line per Notion block, often
+  // without the blank lines expected by CommonMark. Add block spacing while
+  // keeping list items, blockquotes, fenced code, and table rows together.
+  const lines = result.split('\n');
+  const spaced = [];
+  let inFence = false;
+  let inTable = false;
+  const isList = (line) => /^(?:[-*+]\s|\d+[.)]\s)/.test(line);
+  const isQuote = (line) => line.startsWith('>');
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    spaced.push(line);
+    if (/^(?:\s*)(`{3,}|~{3,})/.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    if (/^\s*<table\b/i.test(line)) inTable = true;
+    if (/^\s*<\/table>/i.test(line)) inTable = false;
+    const next = lines[index + 1];
+    if (!next || !next.trim() || inTable || !line.trim()) continue;
+    const currentTrimmed = line.trim();
+    const nextTrimmed = next.trim();
+    const keepTogether =
+      (isList(currentTrimmed) && isList(nextTrimmed)) ||
+      (isQuote(currentTrimmed) && isQuote(nextTrimmed));
+    if (!keepTogether) spaced.push('');
+  }
+
+  return spaced
+    .join('\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
-
-  return result;
 }
 
 function excerpt(markdown, title) {
