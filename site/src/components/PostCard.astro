@@ -8,12 +8,14 @@ interface Props {
       date: Date;
       category: string;
       tags: string[];
+      slug?: string;
     };
   };
   featured?: boolean;
 }
 
 const { post, featured = false } = Astro.props;
+const postPath = `/post/${post.data.slug || post.id}/`;
 const date = post.data.date.toLocaleDateString('zh-CN', {
   timeZone: 'UTC',
   year: 'numeric',
@@ -27,12 +29,12 @@ const date = post.data.date.toLocaleDateString('zh-CN', {
     <time datetime={post.data.date.toISOString()}>{date}</time>
     <span>{post.data.category}</span>
   </div>
-  <h2><a href={`/post/${post.id}/`}>{post.data.title}</a></h2>
+  <h2><a href={postPath}>{post.data.title}</a></h2>
   <p>{post.data.description}</p>
   <div class="post-card-footer">
     <ul aria-label="文章标签">
       {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
     </ul>
-    <a class="read-link" href={`/post/${post.id}/`}>阅读全文 <span aria-hidden="true">→</span></a>
+    <a class="read-link" href={postPath}>阅读全文 <span aria-hidden="true">→</span></a>
   </div>
 </article>

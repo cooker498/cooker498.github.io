@@ -1,4 +1,7 @@
 site/node_modules/
 site/dist/
 site/.astro/
+site/.notion-generated.json
+site/src/content/blog/__notion__*.md
+site/public/notion-media/
 .sites-runtime/

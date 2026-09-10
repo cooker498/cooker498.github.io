@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
+    "sync:notion": "node scripts/sync-notion.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

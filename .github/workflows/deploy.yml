@@ -7,6 +7,8 @@ on:
       - 'site/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
 
 permissions:
   contents: read
@@ -20,13 +22,39 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./site
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Build and upload Astro site
-        uses: withastro/action@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          path: ./site
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync Notion content
+        run: npm run sync:notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ secrets.NOTION_DATA_SOURCE_ID }}
+
+      - name: Build Astro site
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Astro site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./site/dist
 
   deploy:
     needs: build
