@@ -218,7 +218,10 @@ function normalizeMarkdown(markdown) {
   // dedent their children into a regular blockquote.
   result = result.replace(/<callout\b([^>]*)>([\s\S]*?)<\/callout>/gi, (_, attributes, body) => {
     const icon = attributes.match(/\bicon="([^"]+)"/i)?.[1] ?? '';
-    const content = body.replace(/^\t/gm, '').trim();
+    const content = body
+      .replace(/^\t/gm, '')
+      .replace(/\*\*([^*\n]+)\*\*(?=[\p{L}\p{N}])/gu, '**$1** ')
+      .trim();
     const lines = content ? content.split('\n') : [];
     if (icon && lines.length > 0) lines[0] = `${icon} ${lines[0]}`;
     const quote = lines.map((line) => (line.trim() ? `> ${line}` : '>')).join('\n');
