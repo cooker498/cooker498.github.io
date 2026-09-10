@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hugo從安裝到部署 - 神秘的糖屋</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="shengmidetang" />
+  <meta name="description" content="windows平臺安裝Hugo （翻譯自Hugo官方文檔） 前往hugo發行版主頁。 ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.36.1" />
+
+
+<link rel="canonical" href="https://namedjw.github.io/post/howtousehugo/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Hugo從安裝到部署" />
+<meta property="og:description" content="windows平臺安裝Hugo （翻譯自Hugo官方文檔） 前往hugo發行版主頁。 ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://namedjw.github.io/post/howtousehugo/" />
+
+
+
+<meta property="article:published_time" content="2018-04-10T22:09:49&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-04-10T22:09:49&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Hugo從安裝到部署">
+<meta itemprop="description" content="windows平臺安裝Hugo （翻譯自Hugo官方文檔） 前往hugo發行版主頁。 ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這">
+
+
+<meta itemprop="datePublished" content="2018-04-10T22:09:49&#43;08:00" />
+<meta itemprop="dateModified" content="2018-04-10T22:09:49&#43;08:00" />
+<meta itemprop="wordCount" content="676">
+
+
+
+<meta itemprop="keywords" content="hugo," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo從安裝到部署"/>
+<meta name="twitter:description" content="windows平臺安裝Hugo （翻譯自Hugo官方文檔） 前往hugo發行版主頁。 ​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">神秘的糖屋</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">主页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">神秘的糖屋</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">主页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hugo從安裝到部署</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-10 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+            
+          </div>
+        <span class="more-meta"> 676 words </span>
+        <span class="more-meta"> 2 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#windows平臺安裝hugo-翻譯自hugo官方文檔">windows平臺安裝Hugo （翻譯自Hugo官方文檔）</a></li>
+<li><a href="#使用hugo創建站點-翻譯自hugo官網">使用Hugo創建站點（翻譯自Hugo官網）</a></li>
+<li><a href="#部署hugo到github-page">部署Hugo到GitHub page</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="windows平臺安裝hugo-翻譯自hugo官方文檔">windows平臺安裝Hugo （翻譯自Hugo官方文檔）</h2>
+
+<ol>
+<li><p>前往<a href="https://github.com/gohugoio/hugo/releases/" title="Title">hugo發行版</a>主頁。</p></li>
+
+<li><p>​最新的發行版公佈在頁面頂部，下拉到頁面底部查看下載列表，這些都是zip文件。</p></li>
+
+<li><p>在每一個版本的末尾找到windows文件，（因爲是更具字母表排序），根據你32位或64位的windows系統下載32位或64位的文件。</p></li>
+
+<li><p>將下載好的zip文件移動到你創建的任一盤符:Hugo\bin 文件下(如 <code>C:\Hugo\bin</code>)。</p></li>
+
+<li><p>雙擊zip文件將它解壓到前面創建的<code>Hugo\bin</code>目錄下，windows默認會解壓到當前目錄，除非你指定了其他的解壓目錄</p></li>
+
+<li><p>你現在應該有三個文件:hugo 的可執行文件（例如 <code>hugo_0.18_windows_amd64.exe</code>), <code>license.md</code>, 和 <code>readme.md</code>。（你現在可以刪除zip文件了。） 將hugo可執行文件(<code>hugo_0.18_windows_amd64.exe</code>)重命名為<code>hugo.exe</code>更易於使用。</p></li>
+</ol>
+
+<p>現在你需要將hugo加入你的windows PATH 設置中</p>
+
+<h2 id="使用hugo創建站點-翻譯自hugo官網">使用Hugo創建站點（翻譯自Hugo官網）</h2>
+
+<ul>
+<li>在<code>c:\hugo\</code> 下新建sites文件夾</li>
+<li>創建一個新站點</li>
+</ul>
+
+<pre><code class="language-bash">cd sites
+hugo new site demo
+</code></pre>
+
+<ul>
+<li>配置主题</li>
+</ul>
+
+<pre><code class="language-bash">cd themes
+git clone https://github.com/spf13/hyde.git
+</code></pre>
+
+<ul>
+<li>運行Hugo</li>
+</ul>
+
+<pre><code class="language-bash">cd ..
+hugo server --theme=tyde --buildDrafts --watch
+</code></pre>
+
+<p>瀏覽器打開<a href="http://localhost:1313">http://localhost:1313</a></p>
+
+<h2 id="部署hugo到github-page">部署Hugo到GitHub page</h2>
+
+<ul>
+<li>在你的GitHub創建一個倉庫，命名為<code>&lt;你的github用戶名&gt;.github.io</code>(如 <code>sss.github.io</code>)</li>
+<li>在站點根目錄執行Hugo命令</li>
+</ul>
+
+<pre><code class="language-bash">cd c:\Hugo\site\demo
+hugo -D --theme=hyde --baseUrl=&quot;http://sss.github.io/&quot;
+</code></pre>
+
+<ul>
+<li>如果一切順利，在demo文件夾下會生成public目錄，將public目錄下的所有文件推送到剛創建的倉庫的master分支</li>
+</ul>
+
+<pre><code class="language-bash">cd public
+git init
+git remote add origin https://github.com/sss/sss.github.io.git
+git add -A
+git commit -m &quot;first commit&quot;
+git push -u origin master
+</code></pre>
+
+<ul>
+<li>瀏覽器訪問<a href="http://sss.github.io/">http://sss.github.io/</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">shengmidetang</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2018-04-10</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/hugo/">hugo</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/howtosignandroidapp/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何给apk签名(翻译自ionic官方文档)</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/namedjw" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.douban.com/people/129969871/" class="iconfont icon-douban" title="douban"></a>
+  <a href="https://namedjw.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+    <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">shengmidetang</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=3.1.1"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
