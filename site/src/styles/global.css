@@ -231,9 +231,9 @@ img { max-width: 100%; height: auto; }
   margin-inline: auto;
 }
 .article-header {
-  width: min(var(--content), calc(100% - var(--toc-width) - var(--article-gap)));
-  max-width: var(--content);
-  margin: 0 0 58px calc(var(--toc-width) + var(--article-gap));
+  width: 100%;
+  max-width: none;
+  margin: 0 0 58px;
 }
 .category-pill { display: inline-block; margin-bottom: 22px; padding: 6px 11px; color: var(--ink); background: var(--citron); font-size: 13px; font-weight: 700; }
 .article-header h1 { font-size: clamp(38px, 6vw, 64px); }
