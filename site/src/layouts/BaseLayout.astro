@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = '神秘的糖屋',
-  description = '架构设计、软件工程与持续学习笔记',
+  title = 'cooker498',
+  description = '连接学习、项目与长期思考的个人知识系统',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -23,29 +23,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#101827" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="alternate" type="application/rss+xml" title="神秘的糖屋" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="cooker498" href="/rss.xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <title>{title === '神秘的糖屋' ? title : `${title} · 神秘的糖屋`}</title>
+    <title>{title === 'cooker498' ? title : `${title} · cooker498`}</title>
   </head>
-  <body>
+  <body class:list={{ 'home-page': Astro.url.pathname === '/' }}>
     <header class="site-header">
       <a class="brand" href="/" aria-label="返回首页">
-        <span class="brand-mark" aria-hidden="true">糖</span>
-        <span><strong>神秘的糖屋</strong><small>持续学习与架构笔记</small></span>
+        <span><strong>cooker498</strong><small>代码 · 思考 · 构建更好的系统</small></span>
       </a>
       <nav aria-label="主导航">
-        <a class:list={{ active: Astro.url.pathname === '/' }} href="/">文章</a>
-        <a class:list={{ active: Astro.url.pathname.startsWith('/post') }} href="/post/">归档</a>
-        <a class:list={{ active: Astro.url.pathname.startsWith('/tags') }} href="/tags/">标签</a>
+        <a class:list={{ active: Astro.url.pathname === '/' }} href="/">首页</a>
+        <a class:list={{ active: Astro.url.pathname.startsWith('/post') }} href="/post/">笔记</a>
+        <a class:list={{ active: Astro.url.pathname.startsWith('/tags') || Astro.url.pathname.startsWith('/categories') }} href="/tags/">主题</a>
         <a class:list={{ active: Astro.url.pathname === '/about/' }} href="/about/">关于</a>
+        <a class="github-link" href="https://github.com/cooker498" aria-label="访问 cooker498 的 GitHub">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
     <main class="page-shell"><slot /></main>
     <footer class="site-footer">
-      <span>© {new Date().getFullYear()} cooker498</span>
+      <span>© {new Date().getFullYear()} cooker498 · Build, connect, iterate.</span>
       <a href="/rss.xml">RSS</a>
       <a href="https://github.com/cooker498">GitHub</a>
     </footer>

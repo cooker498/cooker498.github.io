@@ -5,8 +5,8 @@ export async function GET(context) {
   const posts = (await getCollection('blog', ({ data }) => !data.draft))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return rss({
-    title: '神秘的糖屋',
-    description: '架构设计、软件工程与持续学习笔记',
+    title: 'cooker498',
+    description: '连接学习、项目与长期思考的个人知识系统',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

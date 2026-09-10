@@ -1,29 +1,188 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const latest = posts[0];
-const rest = posts.slice(1);
+const topicCount = new Set(posts.map((post) => post.data.category)).size;
+
+const filters = [
+  { id: 'all', label: '全部', count: posts.length },
+  { id: 'systems', label: '系统', count: 3 },
+  { id: 'algorithms', label: '算法', count: 1 },
+  { id: 'agent', label: 'AI Agent', count: 1 },
+  { id: 'mobile', label: '移动开发', count: 3 },
+  { id: '整理', label: '正在整理', count: 1 },
+];
+
+const projects = [
+  {
+    topic: 'agent', tab: 'AI Agent', tabTone: 'blue', number: '#001',
+    title: 'AI Agent × 交易研究',
+    description: '把市场信息、研究假设和验证过程连接成可追溯的 Agent 工作流。',
+    tags: ['AI Agent', 'Research', 'Evaluation'], date: '研究中', kind: '研究',
+  },
+  {
+    topic: 'algorithms', tab: '算法', tabTone: 'yellow', number: '#002',
+    title: 'Algorithms Learning',
+    description: '算法与数据结构的长期练习仓库，用实现形成稳定的解题直觉。',
+    tags: ['Algorithms', 'Data Structure'], date: '持续学习', kind: '项目',
+    href: 'https://github.com/cooker498/Algorithms_learning',
+  },
+  {
+    topic: 'systems', tab: '分布式系统', tabTone: 'slate', number: '#003',
+    title: '数据密集型应用笔记',
+    description: '从理论到实践，记录我阅读《Designing Data-Intensive Applications》的思考。',
+    tags: ['DDIA', '存储', '一致性'], date: '阅读中', kind: '笔记',
+    href: '/post/ddia-chapter-1/',
+  },
+  {
+    topic: 'mobile', tab: '移动开发', tabTone: 'coral', number: '#004',
+    title: 'Android 工程实践',
+    description: '保留移动端集成、发布和工具链实践，也保留技术选择随时间演进的痕迹。',
+    tags: ['Android', 'Ionic', '工具链'], date: '历史笔记', kind: '项目',
+    href: '/categories/APP%E5%BC%80%E5%8F%91/',
+  },
+  {
+    topic: 'systems', tab: '系统', tabTone: 'green', number: '#005',
+    title: 'cooker498.github.io',
+    description: '从旧版 Hugo 博客演进而来的个人知识站，记录学习与构建本身。',
+    tags: ['Astro', 'GitHub Pages'], date: '正在重构', kind: '项目',
+    href: 'https://github.com/cooker498/cooker498.github.io',
+  },
+  {
+    topic: '整理', tab: '正在整理', tabTone: 'violet', number: '#006',
+    title: 'Agent 工具链笔记',
+    description: '把工具调用、上下文组织与评估方法整理成可以复用的工作手册。',
+    tags: ['Workflow', 'Notes'], date: '待整理', kind: '笔记',
+  },
+];
+
+const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', {
+  timeZone: 'UTC', year: 'numeric', month: '2-digit', day: '2-digit',
+});
 ---
 
-<BaseLayout>
-  <section class="intro">
-    <p class="eyebrow">LEARNING LOG / ARCHITECTURE</p>
-    <h1>把复杂系统，<br /><em>拆成可以验证的判断。</em></h1>
-    <p>记录架构设计、软件工程与持续学习。每篇笔记都尽量从概念走到案例、计算和可复用的方法。</p>
-  </section>
+<BaseLayout description="cooker498 的知识卡片仓：持续学习、持续构建。">
+  <div class="archive-shell">
+    <aside class="knowledge-sidebar" aria-label="知识索引">
+      <div class="side-identity">
+        <span class="side-mark" aria-hidden="true">—</span>
+        <strong>cooker498</strong>
+        <small>Build a sharper me.</small>
+      </div>
 
-  <section class="post-feed" aria-labelledby="latest-heading">
-    <div class="section-heading">
-      <h2 id="latest-heading">最新文章</h2>
-      <span>{posts.length} 篇记录</span>
-    </div>
-    {latest && <PostCard post={latest} featured />}
-    <div class="post-grid">
-      {rest.map((post) => <PostCard post={post} />)}
-    </div>
-  </section>
+      <div class="side-rule"></div>
+      <p class="side-label">KNOWLEDGE INDEX</p>
+      <h2>索引</h2>
+      <div class="topic-nav" role="group" aria-label="按主题筛选">
+        {filters.map((filter) => (
+          <button class:list={['topic-filter', { active: filter.id === 'all' }]} type="button" data-topic-filter={filter.id} aria-pressed={filter.id === 'all' ? 'true' : 'false'}>
+            <span class="topic-glyph" aria-hidden="true">{filter.id === 'all' ? '▤' : filter.id === 'systems' ? '◇' : filter.id === 'algorithms' ? '∑' : filter.id === 'agent' ? '✦' : filter.id === 'mobile' ? '▯' : '□'}</span>
+            <span>{filter.label}</span>
+            <small>{filter.count}</small>
+          </button>
+        ))}
+      </div>
+
+      <div class="side-rule side-rule-lower"></div>
+      <nav class="side-links" aria-label="其他页面">
+        <a href="/about/"><span aria-hidden="true">◎</span>关于我</a>
+        <a href="/post/"><span aria-hidden="true">⌁</span>全部笔记</a>
+        <a href="/rss.xml"><span aria-hidden="true">◔</span>RSS 订阅</a>
+        <a href="https://github.com/cooker498"><span aria-hidden="true">◉</span>在 GitHub 上找到我</a>
+      </nav>
+
+      <blockquote class="side-quote">“技术让世界更大，而持续学习让自己更自由。”<cite>— cooker498</cite></blockquote>
+      <div class="side-foot"><strong>2018 — 现在</strong><span>一个热爱构建的<br />软件工程师</span></div>
+    </aside>
+
+    <main class="archive-main">
+      <section class="archive-intro" aria-labelledby="archive-title">
+        <div>
+          <p class="eyebrow">KNOWLEDGE MAKES A BETTER DEVELOPER</p>
+          <h1 id="archive-title">cooker498 的<br /><span>知识卡片仓</span></h1>
+          <h2>持续学习 / 持续构建</h2>
+          <p class="intro-copy">这里记录我在 AI Agents、量化交易、算法、分布式系统、Hugo 和 Android 等领域的学习笔记与实践项目。把零散的知识整理成可复用的卡片，让技术成为长期复利。</p>
+        </div>
+        <p class="intro-note">记录思考，<br />也记录成长。<span>Better Code<br />Clearer Thinking<br />A Fuller Life</span></p>
+      </section>
+
+      <section class="archive-stats" aria-label="知识仓概览">
+        <div><span class="stat-icon" aria-hidden="true">▱</span><strong>{projects.length}</strong><span>知识卡片<br /><small>笔记 · 项目 · 思考</small></span></div>
+        <div><span class="stat-icon" aria-hidden="true">▤</span><strong>{topicCount}</strong><span>技术领域<br /><small>从系统到实践</small></span></div>
+        <div><span class="stat-icon" aria-hidden="true">↗</span><strong>2018 — 现在</strong><span>持续记录<br /><small>技术、生活与成长</small></span></div>
+        <div class="stat-motto"><span>“持续学习<br />持续构建”</span><small>— cooker498</small></div>
+      </section>
+
+      <section class="card-section" aria-labelledby="featured-title">
+        <div class="card-section-heading">
+          <div><h2 id="featured-title">精选卡片</h2><p>一些正在构建或已经完成的项目，记录从 0 到 1 的过程。</p></div>
+          <a href="https://github.com/cooker498">查看更多 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="card-grid">
+          {projects.map((project) => (
+            <a class:list={['knowledge-card', 'filterable-card', 'tab-' + project.tabTone]} data-topic={project.topic} href={project.href ?? '#'} aria-label={project.title + '：' + project.description}>
+              <span class="file-tab">{project.tab}</span>
+              <span class="card-number">{project.number}</span>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <ul>{project.tags.map((tag) => <li>{tag}</li>)}</ul>
+              <time>{project.date}</time>
+              <span class="card-arrow" aria-hidden="true">→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="notes-section" aria-labelledby="notes-title">
+        <div class="card-section-heading">
+          <div><h2 id="notes-title">最近笔记</h2><p>最新的思考、学习记录与问题总结。</p></div>
+          <a href="/post/">查看更多 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="notes-layout">
+          <ol class="notes-list">
+            {posts.slice(0, 5).map((post, index) => (
+              <li class="filterable-card" data-topic={post.data.category === 'APP开发' ? 'mobile' : post.data.category === '架构设计' ? 'systems' : '整理'}>
+                <a href={'/post/' + post.id + '/'}>
+                  <span class="note-index">{String(index + 1).padStart(2, '0')}</span>
+                  <span class="note-main"><strong>{post.data.title}</strong><small>{post.data.description}</small></span>
+                  <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                  <span class="note-arrow" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <aside class="currently-card" aria-label="正在学习">
+            <p class="eyebrow">CURRENTLY LEARNING</p>
+            <h3>Designing<br />Data-Intensive<br />Applications</h3>
+            <p>从可靠性、可扩展性和可维护性出发，建立对现代数据系统的系统性认知。</p>
+            <div class="reading-status"><span class="reading-check">✓</span><span>正在阅读：第一章<br /><small>可靠、可扩展与可维护的应用</small></span></div>
+            <a href="/post/ddia-chapter-1/">打开笔记 <span aria-hidden="true">→</span></a>
+          </aside>
+        </div>
+      </section>
+
+      <blockquote class="archive-quote">“好的工程师不仅解决问题，还会积累和分享。” <cite>— cooker498</cite><span>THINK DEEPLY<br />BUILD PRACTICALLY<br />SHARE OPENLY</span></blockquote>
+    </main>
+  </div>
+
+  <script>
+    const topicButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-topic-filter]'));
+    const filterableCards = Array.from(document.querySelectorAll<HTMLElement>('.filterable-card'));
+
+    for (const button of topicButtons) {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.topicFilter ?? 'all';
+        for (const candidate of topicButtons) {
+          const active = candidate === button;
+          candidate.classList.toggle('active', active);
+          candidate.setAttribute('aria-pressed', String(active));
+        }
+        for (const card of filterableCards) {
+          card.hidden = selected !== 'all' && card.dataset.topic !== selected;
+        }
+      });
+    }
+  </script>
 </BaseLayout>
