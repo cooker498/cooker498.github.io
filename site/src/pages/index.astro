@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = posts[0];
+const rest = posts.slice(1);
+---
+
+<BaseLayout>
+  <section class="intro">
+    <p class="eyebrow">LEARNING LOG / ARCHITECTURE</p>
+    <h1>把复杂系统，<br /><em>拆成可以验证的判断。</em></h1>
+    <p>记录架构设计、软件工程与持续学习。每篇笔记都尽量从概念走到案例、计算和可复用的方法。</p>
+  </section>
+
+  <section class="post-feed" aria-labelledby="latest-heading">
+    <div class="section-heading">
+      <h2 id="latest-heading">最新文章</h2>
+      <span>{posts.length} 篇记录</span>
+    </div>
+    {latest && <PostCard post={latest} featured />}
+    <div class="post-grid">
+      {rest.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

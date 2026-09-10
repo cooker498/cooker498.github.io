@@ -1,0 +1,44 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const date = post.data.date.toLocaleDateString('zh-CN', {
+  timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="article-layout">
+    <header class="article-header">
+      <a class="category-pill" href={`/categories/${encodeURIComponent(post.data.category)}/`}>{post.data.category}</a>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.description}</p>
+      <div class="article-meta">
+        <time datetime={post.data.date.toISOString()}>{date}</time>
+        <span>·</span>
+        <span>{post.data.tags.join(' / ')}</span>
+      </div>
+    </header>
+    <div class="article-grid">
+      <div class="article-content"><Content /></div>
+      {headings.length > 2 && (
+        <aside class="toc" aria-label="文章目录">
+          <strong>本文目录</strong>
+          <ol>{headings.filter((h) => h.depth <= 3).map((h) => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </aside>
+      )}
+    </div>
+    <footer class="article-footer">
+      <span>最后更新：{(post.data.updated ?? post.data.date).toISOString().slice(0, 10)}</span>
+      <a href="/post/">返回归档</a>
+    </footer>
+  </article>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  post: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      date: Date;
+      category: string;
+      tags: string[];
+    };
+  };
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const date = post.data.date.toLocaleDateString('zh-CN', {
+  timeZone: 'UTC',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+---
+
+<article class:list={['post-card', { featured }] }>
+  <div class="post-card-meta">
+    <time datetime={post.data.date.toISOString()}>{date}</time>
+    <span>{post.data.category}</span>
+  </div>
+  <h2><a href={`/post/${post.id}/`}>{post.data.title}</a></h2>
+  <p>{post.data.description}</p>
+  <div class="post-card-footer">
+    <ul aria-label="文章标签">
+      {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
+    </ul>
+    <a class="read-link" href={`/post/${post.id}/`}>阅读全文 <span aria-hidden="true">→</span></a>
+  </div>
+</article>

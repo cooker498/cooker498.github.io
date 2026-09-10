@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const groups = Object.groupBy(posts, (post) => String(post.data.date.getUTCFullYear()));
+const years = Object.keys(groups).sort((a, b) => Number(b) - Number(a));
+---
+
+<BaseLayout title="文章归档" description="神秘的糖屋全部文章归档">
+  <header class="page-heading">
+    <p class="eyebrow">ARCHIVE</p>
+    <h1>文章归档</h1>
+    <p>按时间回看学习轨迹，共 {posts.length} 篇。</p>
+  </header>
+  <div class="archive-list">
+    {years.map((year) => (
+      <section>
+        <h2>{year}</h2>
+        <ol>
+          {groups[year]?.map((post) => (
+            <li>
+              <time datetime={post.data.date.toISOString()}>{post.data.date.toISOString().slice(5, 10)}</time>
+              <a href={`/post/${post.id}/`}>{post.data.title}</a>
+              <span>{post.data.category}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

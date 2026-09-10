@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const counts = new Map<string, number>();
+for (const post of posts) counts.set(post.data.category, (counts.get(post.data.category) ?? 0) + 1);
+const categories = [...counts].sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="分类" description="按分类浏览文章">
+  <header class="page-heading"><p class="eyebrow">CATEGORIES</p><h1>文章分类</h1><p>按知识领域浏览全部文章。</p></header>
+  <div class="category-grid">
+    {categories.map(([category, count]) => <a href={`/categories/${encodeURIComponent(category)}/`}><strong>{category}</strong><span>{count} 篇文章</span></a>)}
+  </div>
+</BaseLayout>

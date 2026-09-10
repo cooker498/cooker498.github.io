@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = '神秘的糖屋',
+  description = '架构设计、软件工程与持续学习笔记',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101827" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title="神秘的糖屋" href="/rss.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <title>{title === '神秘的糖屋' ? title : `${title} · 神秘的糖屋`}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="返回首页">
+        <span class="brand-mark" aria-hidden="true">糖</span>
+        <span><strong>神秘的糖屋</strong><small>持续学习与架构笔记</small></span>
+      </a>
+      <nav aria-label="主导航">
+        <a class:list={{ active: Astro.url.pathname === '/' }} href="/">文章</a>
+        <a class:list={{ active: Astro.url.pathname.startsWith('/post') }} href="/post/">归档</a>
+        <a class:list={{ active: Astro.url.pathname.startsWith('/tags') }} href="/tags/">标签</a>
+        <a class:list={{ active: Astro.url.pathname === '/about/' }} href="/about/">关于</a>
+      </nav>
+    </header>
+    <main class="page-shell"><slot /></main>
+    <footer class="site-footer">
+      <span>© {new Date().getFullYear()} cooker498</span>
+      <a href="/rss.xml">RSS</a>
+      <a href="https://github.com/cooker498">GitHub</a>
+    </footer>
+  </body>
+</html>
