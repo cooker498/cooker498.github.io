@@ -203,7 +203,7 @@ async function localizeMedia(markdown, slug, generatedMedia) {
 }
 
 function normalizeMarkdown(markdown) {
-  return markdown
+  let result = markdown
     .replace(/\s*\{(?:color|toggle)="[^"]*"\}/g, '')
     .replace(/<empty-block\s*\/>/gi, '')
     .replace(/<mention-(?:user|page|database|data-source|agent)(?:\s+url="[^"]*")?>([\s\S]*?)<\/mention-[^>]+>/gi, '$1')
@@ -212,8 +212,28 @@ function normalizeMarkdown(markdown) {
     .replace(/<unknown\s+url="([^"]+)"\s*\/>/gi, '[未同步内容]($1)')
     .replace(/<page\s+url="([^"]+)"[^>]*>([\s\S]*?)<\/page>/gi, '[$2]($1)')
     .replace(/<database\s+url="([^"]+)"[^>]*>([\s\S]*?)<\/database>/gi, '[$2]($1)')
+
+  // Notion-flavored Markdown uses custom block tags. Standard Markdown
+  // parsers treat their contents as raw HTML, so unwrap callouts and
+  // dedent their children into a regular blockquote.
+  result = result.replace(/<callout\b([^>]*)>([\s\S]*?)<\/callout>/gi, (_, attributes, body) => {
+    const icon = attributes.match(/\bicon="([^"]+)"/i)?.[1] ?? '';
+    const content = body.replace(/^\t/gm, '').trim();
+    const lines = content ? content.split('\n') : [];
+    if (icon && lines.length > 0) lines[0] = `${icon} ${lines[0]}`;
+    const quote = lines.map((line) => (line.trim() ? `> ${line}` : '>')).join('\n');
+    return `\n\n${quote}\n\n`;
+  });
+
+  // Ensure Markdown resumes after Notion's HTML table block. Without the
+  // separating blank line, all following headings and lists remain literal.
+  result = result
+    .replace(/<table\b([^>]*)>/gi, '\n\n<table$1>\n')
+    .replace(/<\/table>/gi, '\n</table>\n\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+
+  return result;
 }
 
 function excerpt(markdown, title) {
