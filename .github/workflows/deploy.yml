@@ -8,7 +8,7 @@ on:
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7 * * * *'
 
 permissions:
   contents: read

@@ -28,7 +28,7 @@ draft: false
 
 ## 从 Notion 自动发布
 
-站点会由 GitHub Actions 每 15 分钟查询一次 Notion 文章数据库，并发布状态为 `Published`（或 `已发布`、`发布`、`公开`）的页面。工作流也可以在 GitHub Actions 页面手动运行。
+站点会由 GitHub Actions 每小时查询一次 Notion 文章数据库，并发布状态为 `Published`（或 `已发布`、`发布`、`公开`）的页面。工作流也可以在 GitHub Actions 页面手动运行。
 
 Notion 数据库建议包含以下字段：
 
