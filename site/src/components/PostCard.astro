@@ -12,29 +12,48 @@ interface Props {
     };
   };
   featured?: boolean;
+  topic?: string;
 }
 
-const { post, featured = false } = Astro.props;
+const { post, featured = false, topic } = Astro.props;
 const postPath = `/post/${post.data.slug || post.id}/`;
 const date = post.data.date.toLocaleDateString('zh-CN', {
   timeZone: 'UTC',
   year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
+  month: 'long',
+  day: 'numeric',
 });
 ---
 
-<article class:list={['post-card', { featured }] }>
-  <div class="post-card-meta">
-    <time datetime={post.data.date.toISOString()}>{date}</time>
-    <span>{post.data.category}</span>
-  </div>
-  <h2><a href={postPath}>{post.data.title}</a></h2>
-  <p>{post.data.description}</p>
-  <div class="post-card-footer">
-    <ul aria-label="文章标签">
-      {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
-    </ul>
-    <a class="read-link" href={postPath}>阅读全文 <span aria-hidden="true">→</span></a>
+<article
+  class:list={['lift-card', 'post-card', { featured, 'filterable-card': Boolean(topic) }]}
+  data-topic={topic}
+>
+  <div class="lift-back" aria-hidden="true"></div>
+  <div class="lift-front" aria-hidden="true"></div>
+  <div class="lift-face">
+    <h2>
+      <a href={postPath}>{post.data.title}</a>
+      <svg class="arrow" viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </h2>
+    <p>{post.data.description}</p>
+    <div class="card-meta">
+      <time datetime={post.data.date.toISOString()}>{date}</time>
+      <span aria-hidden="true"> · </span>
+      <a href={`/categories/${encodeURIComponent(post.data.category)}/`}>{post.data.category}</a>
+      {post.data.tags.length > 0 && (
+        <>
+          <span aria-hidden="true"> · </span>
+          <span class="tag-row">
+            {post.data.tags.map((tag) => (
+              <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>
+            ))}
+          </span>
+        </>
+      )}
+    </div>
+    <a class="read-link" href={postPath}>阅读全文</a>
   </div>
 </article>

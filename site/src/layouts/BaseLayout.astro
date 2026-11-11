@@ -11,16 +11,18 @@ const {
   description = '连接学习、项目与长期思考的个人知识系统',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#101827" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="cooker498" href="/rss.xml" />
@@ -29,25 +31,117 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <title>{title === 'cooker498' ? title : `${title} · cooker498`}</title>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var dark =
+            stored === 'dark' ||
+            (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class:list={{ 'home-page': Astro.url.pathname === '/' }}>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="返回首页">
-        <span><strong>cooker498</strong><small>代码 · 思考 · 构建更好的系统</small></span>
-      </a>
-      <nav aria-label="主导航">
-        <a class:list={{ active: Astro.url.pathname === '/' }} href="/">首页</a>
-        <a class:list={{ active: Astro.url.pathname.startsWith('/post') }} href="/post/">笔记</a>
-        <a class:list={{ active: Astro.url.pathname.startsWith('/tags') || Astro.url.pathname.startsWith('/categories') }} href="/tags/">主题</a>
-        <a class:list={{ active: Astro.url.pathname === '/about/' }} href="/about/">关于</a>
-        <a class="github-link" href="https://github.com/cooker498" aria-label="访问 cooker498 的 GitHub">GitHub <span aria-hidden="true">↗</span></a>
-      </nav>
+  <body>
+    <div class="grid-backdrop" aria-hidden="true">
+      <div class="grid-half left">
+        <div class="grid-lines"></div>
+        <div class="grid-lines-h"></div>
+        <div class="grid-fade"></div>
+      </div>
+      <div class="grid-half right">
+        <div class="grid-lines"></div>
+        <div class="grid-lines-h"></div>
+        <div class="grid-fade"></div>
+      </div>
+    </div>
+    <div class="header-spacer"></div>
+    <header class="site-header" id="header">
+      <div class="header-bar">
+        <a class="brand" href="/" aria-label="返回首页">
+          <img src="/favicon.svg" alt="" width="20" height="20" />
+          <span>Hi, cooker498</span>
+        </a>
+        <div class="header-tools">
+          <nav id="menu" class="site-nav" aria-label="主导航">
+            <a class:list={{ active: path === '/' }} href="/">首页</a>
+            <a class:list={{ active: path.startsWith('/post') }} href="/post/">笔记</a>
+            <a class:list={{ active: path.startsWith('/tags') || path.startsWith('/categories') }} href="/tags/">主题</a>
+            <a class:list={{ active: path === '/about/' }} href="/about/">关于</a>
+            <a class="github-link" href="https://github.com/cooker498" aria-label="访问 cooker498 的 GitHub">GitHub <span aria-hidden="true">↗</span></a>
+          </nav>
+          <button class="icon-button" id="themeToggle" type="button" aria-label="切换深色模式" aria-pressed="false">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z"></path>
+            </svg>
+          </button>
+          <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="menu">
+            <svg class="icon-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 8h16M4 16h16"></path>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
     </header>
-    <main class="page-shell"><slot /></main>
+    <div class="menu-backdrop" id="menuBackdrop" hidden></div>
+    <main class="page-shell" id="content"><slot /></main>
     <footer class="site-footer">
-      <span>© {new Date().getFullYear()} cooker498 · Build, connect, iterate.</span>
-      <a href="/rss.xml">RSS</a>
-      <a href="https://github.com/cooker498">GitHub</a>
+      <div class="footer-inner">
+        <a class="brand" href="/" aria-label="返回首页">
+          <img src="/favicon.svg" alt="" width="20" height="20" />
+          <span>Hi, cooker498</span>
+        </a>
+        <p>© {new Date().getFullYear()} cooker498 · Build, connect, iterate.</p>
+        <a href="/rss.xml">RSS</a>
+        <a href="https://github.com/cooker498">GitHub</a>
+      </div>
     </footer>
+    <script is:inline>
+      (function () {
+        const header = document.getElementById('header');
+        const toggle = document.getElementById('menuToggle');
+        const backdrop = document.getElementById('menuBackdrop');
+        const menu = document.getElementById('menu');
+        const themeToggle = document.getElementById('themeToggle');
+        const root = document.documentElement;
+
+        const onScroll = () => header.classList.toggle('is-stuck', window.scrollY > 16);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        const setMenu = (open) => {
+          document.body.classList.toggle('menu-open', open);
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.setAttribute('aria-label', open ? '关闭菜单' : '打开菜单');
+          backdrop.hidden = !open;
+        };
+        toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+        backdrop.addEventListener('click', () => setMenu(false));
+        menu.addEventListener('click', (event) => {
+          if (event.target.closest('a')) setMenu(false);
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') setMenu(false);
+        });
+
+        const syncTheme = () => themeToggle.setAttribute('aria-pressed', String(root.classList.contains('dark')));
+        syncTheme();
+        themeToggle.addEventListener('click', () => {
+          const dark = root.classList.toggle('dark');
+          try {
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+          } catch (e) {}
+          syncTheme();
+        });
+      })();
+    </script>
   </body>
 </html>
